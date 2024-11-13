@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from '@/plugins/axios'
 import type { APIResponse, Category, Categories } from '@/type/index'
-import Category from '@/views/Category.vue';
+import category from '@/views/Category.vue';
 
 export const useCategoryStore = defineStore('CategoryStore', {
     state: () => ({

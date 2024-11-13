@@ -6,6 +6,7 @@ import { Notivue, Notifications } from 'notivue'
 import Navbar from './components/Navbar.vue'
 </script>
 
+
 <template>
    <GlobalLoader>
     <CircleSpinner />

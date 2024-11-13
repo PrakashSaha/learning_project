@@ -112,7 +112,7 @@ const onSubmit = async()=>{
 </script>
 
 <template>
-   <Modal isOpen="isOpen" @on-close="onClose">
+   <Modal isOpen ="isOpen" @on-close="onClose">
     <div class="overflow-y-auto h-[500px] max-h-[600px]">
         <form @submit.prevent="onSubmit" action="" class="grid gap-y-4">
             <div class="grid pt-3 gap-2">

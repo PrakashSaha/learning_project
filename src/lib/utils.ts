@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { push } from 'notivue'
-import type {Error} from '@/types'
+import type {Error} from '@/type/index'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
