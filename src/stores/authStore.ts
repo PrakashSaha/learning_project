@@ -44,9 +44,8 @@ export const useAuthStore = defineStore('Aathstore', {
 
 
                     res(data.data.user);
-                } catch (e) {
-                    console.error('Login request failed:', e.response?.data || e.message);
-                    rej(e);
+                } catch (err) {
+                    rej(err);
                 }
             });
         },

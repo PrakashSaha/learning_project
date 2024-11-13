@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Modal from '@/components/ui/Modal.vue';
+import Modal from '@/components/ui/modal.vue';
 import FileUploader from '@/components/FileUplodaer.vue';
 import { useObjectUrl } from '@vueuse/core';
 
@@ -46,7 +46,7 @@ import { useProductStore } from '@/stores/productStore';
 const productStore = useProductStore();
 const categories = computed(() => categoryStore.categoriesData.categories);
 const mainImagePreview = ref<string[]>([]);
-const subImagesPreviews = ref<string[]>([]);
+const subImagesPreview = ref<string[]>([]);
 const onMainImageDrop = (files: File[] | null) => {
   form.value.mainImage = files && files.length > 0 ? files[0] : undefined;
   if (files && files.length) {
@@ -85,7 +85,7 @@ const onSubImageDrop = (files: File[] | null) => {
     files.forEach((file, index) => {
       const url = useObjectUrl(file);
       if (url.value) {
-        subImagesPreviews.value.push(url.value);
+        subImagesPreview.value.push(url.value);
       }
     });
   }
@@ -96,7 +96,7 @@ const onSubImageChange = (files: FileList | null) => {
     Array.from(files).forEach((file, index) => {
       const url = useObjectUrl(file);
       if (url.value) {
-        subImagesPreviews.value.push(url.value);
+        subImagesPreview.value.push(url.value);
       }
     });
   }
@@ -127,7 +127,7 @@ const fetchProduct = async () => {
       form.value.description = product.description;
       form.value.category = product.category;
       mainImagePreview.value.push(product.mainImage.url);
-      subImagesPreviews.value = product.subImages.map((img) => img.url);
+      subImagesPreview.value = product.subImages.map((img) => img.url);
 
     }
   } catch (error) {
@@ -182,7 +182,7 @@ onMounted(async () => {
                     />
                      <img 
                          v-for="img in mainImagePreview"
-                         :src="img"
+                         :src="img" :key="img"
                          class="h-40 w-auto object-cover border"
                      />
                 </div>
@@ -195,11 +195,7 @@ onMounted(async () => {
                     @on-drop= "onSubImageDrop" 
                     :multiple = "true"
                     />
-                     <img 
-                         v-for="img in subImagePreviews"
-                         :src="img"
-                         class="h-40 w-auto object-cover border"
-                     />
+                     <img v-for="img in subImagePreview" :src="img" class="h-40 w-auto object-cover border" :key="img"/>
                 </div>
             </div>
             

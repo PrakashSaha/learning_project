@@ -2,7 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import {globalLoader} from 'vue-global-loader'
+import { globalLoader } from 'vue-global-loader'
 import { createNotivue } from 'notivue'
 import App from './App.vue'
 import router from './router'
